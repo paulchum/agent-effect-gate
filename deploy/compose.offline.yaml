@@ -1,0 +1,40 @@
+# OPTIONAL OFFLINE MCP FIXTURE, not the enabled native customer profile.
+# MCP is attached to a trusted connector, never published as an unauthenticated port.
+# Run: docker compose -f deploy/compose.offline.yaml run --rm --no-deps -T broker
+services:
+  broker:
+    image: ${AEG_IMAGE:?Set AEG_IMAGE to an approved, built image digest}
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 64
+    mem_limit: 512m
+    cpus: 1.0
+    network_mode: ${AEG_NETWORK_MODE:-none}
+    stdin_open: true
+    tty: false
+    init: true
+    stop_grace_period: 45s
+    restart: "no"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+    volumes:
+      - type: bind
+        source: ${AEG_STATE_DIR:?Set AEG_STATE_DIR to a private volume directory containing state/ and owned by UID 10001}
+        target: /var/lib/aeg
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${AEG_ANCHOR_FILE:?Set AEG_ANCHOR_FILE to an externally retained audit anchor}
+        target: /run/aeg-anchor.json
+        read_only: true
+        bind:
+          create_host_path: false
+    # Raw protocol responses can contain customer data; do not persist them as Docker logs.
+    logging:
+      driver: none
+    command: ["mcp", "--state", "/var/lib/aeg/state", "--agent", "main", "--anchor", "/run/aeg-anchor.json", "--production"]

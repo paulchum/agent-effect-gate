@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-effect-gate"
+dynamic = ["version"]
+description = "Open-core permission and approval gate for AI agent tools"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+keywords = ["agents", "approval", "audit", "tools"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Security",
+]
+
+[project.urls]
+Homepage = "https://github.com/paulchum/agent-effect-gate"
+Repository = "https://github.com/paulchum/agent-effect-gate"
+Documentation = "https://github.com/paulchum/agent-effect-gate#readme"
+Issues = "https://github.com/paulchum/agent-effect-gate/issues"
+Changelog = "https://github.com/paulchum/agent-effect-gate/blob/main/CHANGELOG.md"
+
+[project.scripts]
+agent-effect-gate = "agent_effect_gate.cli:main"
+agent-effect-gate-mcp = "agent_effect_gate.integrations.mcp:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "build_support.distribution_version"}
+
+[tool.setuptools.packages.find]
+include = ["agent_effect_gate*"]
+
+[project.optional-dependencies]
+review = ["uvicorn==0.48.0"]
+# Optional dependencies belong in the framework process, not the broker process.
+openai = ["openai-agents==0.22.3"]
+langchain = ["langchain-core==1.6.4"]
+langgraph = ["langchain-core==1.6.4", "langgraph==1.2.12"]
+pydantic = ["pydantic-ai-slim==2.47.0"]
+mcp = ["mcp==2.2.0"]
+all = ["uvicorn==0.48.0", "openai-agents==0.22.3", "langchain-core==1.6.4", "langgraph==1.2.12", "pydantic-ai-slim==2.47.0", "mcp==2.2.0"]
+
+[tool.setuptools.package-data]
+agent_effect_gate = ["web/*.html", "web/*.css", "web/*.js"]

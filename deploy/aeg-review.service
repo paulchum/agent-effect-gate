@@ -1,0 +1,29 @@
+# Native Linux template. Replace paths/domain and qualify isolation under these limits.
+[Unit]
+Description=Agent Effect Gate authenticated reviewer console
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aeg
+Group=aeg
+WorkingDirectory=/var/lib/aeg
+UMask=0077
+ExecStart=/opt/aeg/venv/bin/agent-effect-gate review --state /var/lib/aeg/state --host 127.0.0.1 --port 8765 --public-origin https://review.customer.example --anchor /var/lib/aeg-anchors/current.json --production --check-sandbox
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/aeg
+TasksMax=64
+MemoryMax=1G
+LimitNOFILE=1024
+# Do not add PrivateUsers/RestrictNamespaces/seccomp settings without re-running
+# the real sandbox tests: approved code needs its own nested namespace setup.
+
+[Install]
+WantedBy=multi-user.target

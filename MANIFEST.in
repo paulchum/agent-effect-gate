@@ -1,0 +1,17 @@
+include LICENSE README.md ASSURANCE.md FEATURES.md REVIEW_FIXES.md VALIDATION.md SECURITY.md CUSTOMER_DEPLOYMENT.md
+include OPEN_CORE.md COMMERCIAL.md CONTRIBUTING.md SUPPORT.md CHANGELOG.md
+include Makefile Dockerfile requirements-build.txt requirements-review.txt .dockerignore .gitignore
+include install.py build_support.py pyproject.toml
+recursive-include agent_effect_gate *.py *.html *.css *.js
+recursive-include docs *.md
+recursive-include examples *.py *.json
+recursive-include scripts *.py
+recursive-include tests *.py
+recursive-include integration_tests *.py
+recursive-include verification *.py *.json
+recursive-include deploy *.json *.md *.service *.conf *.yaml *.txt
+recursive-include .github *.yml *.yaml *.md CODEOWNERS
+prune build
+prune dist
+prune validation
+global-exclude __pycache__ *.py[cod] *.sqlite* *.token *.pem *.key .env .env.* .DS_Store

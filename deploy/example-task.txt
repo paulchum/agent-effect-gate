@@ -1,0 +1,1 @@
+Use the compute tool to calculate the sum of the squares of integers from 1 through 10. Run isolated Python, capture the result, and submit an answer citing the exact observed output. Do not send task data to an external destination. If a tool requires human approval, stop and provide its existing call identifier rather than creating duplicate requests.

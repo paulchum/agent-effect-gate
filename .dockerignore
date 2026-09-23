@@ -1,0 +1,6 @@
+**
+!Dockerfile
+!install.py
+!dist/
+!dist/agent-effect-gate.pyz
+!dist/SHA256SUMS

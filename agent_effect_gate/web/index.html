@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Review Console · Agent Effect Gate</title>
+  <link rel="stylesheet" href="/app.css"><script defer src="/app.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><span class="brand-mark">AE</span><span>Agent Effect Gate<small>REVIEW CONSOLE</small></span></div>
+    <div class="rail-label">CONTROL PLANE</div>
+    <div class="nav-active"><span>◈</span> Effect approvals <span id="nav-count" class="count">—</span></div>
+    <div class="rail-note"><span class="dot"></span> Independent human review<br><small>Agent tools cannot access this console.</small></div>
+    <div class="rail-bottom"><strong>Exact bytes. Explicit authority.</strong><p>Review the destination and every argument before permitting an effect.</p><span class="version">Customer workspace</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><div>Workspace <span class="slash">/</span> Review console</div><div id="identity" hidden><span id="username"></span><button id="logout" class="quiet">Sign out</button></div></header>
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    <section id="login" class="login-panel">
+      <span class="eyebrow">PROTECTED REVIEWER ACCESS</span><h1>Keep the final decision<br>in human hands.</h1>
+      <p class="muted">Sign in with your reviewer account to inspect and approve exact agent effects within your assigned tasks.</p>
+      <form id="login-form"><label for="user">Username</label><input id="user" name="username" autocomplete="username" maxlength="80" required>
+        <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="1024" required>
+        <button class="primary" id="sign-in" type="submit">Sign in to review <span>→</span></button>
+      </form><p class="login-help">Accounts are provisioned by your deployment administrator. There is no public signup.</p>
+    </section>
+    <div id="workspace" hidden>
+      <section class="page-heading"><div><span class="eyebrow">HUMAN OVERSIGHT</span><h1>Effect approvals</h1><p class="muted">Inspect the request. Confirm the scope. Make the call.</p></div><button id="refresh" class="secondary">↻ Refresh</button></section>
+      <section class="metrics" aria-label="Task metrics"><article class="metric"><span>Awaiting review</span><strong id="pending-count">0</strong><small>Pending proposals in your scope</small></article><article class="metric"><span>Action budget remaining</span><strong id="actions-count">0</strong><small id="actions-note">Across assigned tasks</small></article><article class="metric"><span>Read quota remaining</span><strong id="reads-count">0</strong><small id="reads-note">Separate from actions and retries</small></article></section>
+      <section class="scope-panel"><div><span class="dot"></span><strong>Your task scope</strong></div><div id="task-scope" class="scope-list"></div></section>
+      <div class="review-layout">
+        <section class="queue-panel"><div class="panel-heading"><h2>Review queue</h2><label class="sr-only" for="state-filter">Filter by state</label><select id="state-filter"><option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="REVOKED">Rejected / revoked</option><option value="ALL">All states</option></select></div><div id="queue"></div><div class="pagination"><button id="previous" class="quiet" disabled>← Previous</button><span id="page-number">Page 1</span><button id="next" class="quiet" disabled>Next →</button></div></section>
+        <section class="detail-panel" aria-label="Request details"><div id="detail-empty" class="empty-detail"><span class="outline-mark">◇</span><h2>Select a request to review</h2><p>Exact destination, code, arguments and payload bytes will appear here. Opening a request never executes it.</p></div>
+          <div id="detail" hidden><div class="detail-heading"><div><span id="detail-kind" class="eyebrow"></span><h2 id="detail-title"></h2></div><span id="detail-state" class="badge"></span></div>
+            <dl id="detail-meta" class="metadata"></dl><div class="warning" id="review-warning"></div>
+            <h3>Destination &amp; execution scope</h3><pre id="manifest"></pre><h3 id="payload-label">Exact prepared request</h3><pre id="prepared"></pre>
+            <section id="upload-preview" hidden><h3>Upload payload · inert UTF-8 preview</h3><p id="upload-meta"></p><pre id="upload-text"></pre></section>
+            <details id="payload-extra" hidden><summary>Base64 payload (exact bytes)</summary><pre id="payload-base64"></pre></details>
+            <div class="fingerprint"><span>REQUEST / PAYLOAD SHA-256</span><code id="request-hash"></code></div>
+            <div class="decision-area"><label class="ack"><input id="acknowledge" type="checkbox"><span>I reviewed the destination and exact content. Approval permits this effect within the displayed policy and expiry.</span></label><div class="decision-buttons"><button id="reject" class="danger">Reject request</button><button id="approve" class="primary" disabled>Approve exact request</button></div><p id="decision-note" class="muted"></p></div>
+          </div>
+        </section>
+      </div>
+      <section class="activity"><div class="panel-heading"><h2>Recent audit activity</h2><span class="muted">Latest 40 events in your task scope</span></div><div class="table-scroll"><table><thead><tr><th>Event</th><th>Task</th><th>Actor</th><th>Time</th></tr></thead><tbody id="events"></tbody></table></div><p class="audit-note">The journal is tamper-evident, not a claim that model output is true. Retain audit anchors independently.</p></section>
+    </div>
+    <footer>Agent Effect Gate <span>·</span> Reviewer identities come from authenticated sessions, never model-supplied names.</footer>
+  </main>
+</div>
+</body></html>

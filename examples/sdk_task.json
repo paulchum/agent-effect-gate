@@ -1,0 +1,14 @@
+{
+  "task_id": "sdk-evaluation",
+  "tenant_id": "local-evaluation",
+  "policy": {
+    "agents": ["main"],
+    "answer_mode": "model",
+    "local_only": true,
+    "max_requests": 1000,
+    "max_denials": 100,
+    "tool_grants": {}
+  },
+  "sources": [],
+  "tools": []
+}

@@ -1,0 +1,76 @@
+{
+  "task_id": "lakes-demo",
+  "tenant_id": "example-tenant",
+  "policy": {
+    "agents": [
+      "main",
+      "worker"
+    ],
+    "channels": [
+      [
+        "main",
+        "worker"
+      ],
+      [
+        "worker",
+        "main"
+      ]
+    ],
+    "local_only": true,
+    "stage": "testing",
+    "model_family": "synthetic-proposal-replay-no-model-called",
+    "fields": [
+      {
+        "id": "large_lakes",
+        "label": "Synthetic lakes above 5,000,000 square meters",
+        "source": "synthetic-lakes",
+        "version": "v1",
+        "pointer": "/lakes",
+        "operation": "filter_table",
+        "where": {
+          "column": "area_m2",
+          "comparison": "gt",
+          "value": 5000000
+        },
+        "columns": [
+          "id",
+          "name"
+        ]
+      },
+      {
+        "id": "historical_earnings",
+        "label": "Historical earnings (source intentionally absent)",
+        "source": "earnings",
+        "version": "v1",
+        "pointer": "/earnings"
+      }
+    ],
+    "answer_mode": "evidence"
+  },
+  "sources": [
+    {
+      "id": "synthetic-lakes",
+      "version": "v1",
+      "origin": "Synthetic local regression fixture; not real lake data",
+      "document": {
+        "lakes": [
+          {
+            "id": 101,
+            "name": "Example Lake A",
+            "area_m2": 6200000
+          },
+          {
+            "id": 102,
+            "name": "Example Lake B",
+            "area_m2": 4900000
+          },
+          {
+            "id": 103,
+            "name": "Example Lake C",
+            "area_m2": 8100000
+          }
+        ]
+      }
+    }
+  ]
+}

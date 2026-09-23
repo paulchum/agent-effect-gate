@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private security report
+    url: https://github.com/paulchum/agent-effect-gate/security/advisories/new
+    about: Report vulnerabilities privately. Do not include security-sensitive details in public issues.

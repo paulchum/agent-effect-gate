@@ -1,0 +1,16 @@
+{
+  "task_id": "customer-task",
+  "tenant_id": "customer-tenant",
+  "policy": {
+    "agents": ["main"],
+    "stage": "deployment",
+    "answer_mode": "model",
+    "local_only": true,
+    "tool_grants": {},
+    "max_requests": 1000,
+    "max_denials": 20,
+    "approval_ttl_seconds": 300
+  },
+  "sources": [],
+  "tools": []
+}

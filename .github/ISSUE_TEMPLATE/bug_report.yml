@@ -1,0 +1,30 @@
+name: Bug report
+description: Report unexpected behavior in the MIT core.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For vulnerabilities, use [private security reporting](https://github.com/paulchum/agent-effect-gate/security/advisories/new).
+        Use synthetic examples and remove credentials, customer data and private state from this public report.
+  - type: input
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Include the Agent Effect Gate version, Python version and Linux distribution.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal synthetic example, commands and relevant configuration.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: Explain what you expected and what happened. Include relevant error messages with secrets removed.
+    validations:
+      required: true

@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "agent-effect-gate": {
+      "command": "/opt/aeg/venv/bin/agent-effect-gate",
+      "args": [
+        "mcp",
+        "--state",
+        "/var/lib/aeg/state",
+        "--agent",
+        "main",
+        "--anchor",
+        "/var/lib/aeg-anchors/current.json",
+        "--production",
+        "--check-sandbox"
+      ]
+    }
+  }
+}

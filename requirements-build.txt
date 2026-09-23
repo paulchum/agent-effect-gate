@@ -1,0 +1,3 @@
+# Build-time only; the installed broker has no third-party Python dependencies.
+# Refresh deliberately and re-run release validation before changing this pin.
+setuptools==82.0.1

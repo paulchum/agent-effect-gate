@@ -1,0 +1,4 @@
+# Tested optional reviewer-server dependency set; install from an approved index/wheelhouse.
+uvicorn==0.48.0
+click==8.1.8
+h11==0.16.0

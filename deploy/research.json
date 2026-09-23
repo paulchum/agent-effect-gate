@@ -1,0 +1,18 @@
+{
+  "task_id": "customer-research",
+  "tenant_id": "customer-tenant",
+  "policy": {
+    "agents": ["main"],
+    "stage": "deployment",
+    "answer_mode": "model",
+    "local_only": false,
+    "tool_grants": {"python_docs": {"approval": "required", "max_calls": 20}},
+    "max_requests": 1000,
+    "max_denials": 20,
+    "approval_ttl_seconds": 300
+  },
+  "sources": [],
+  "tools": [
+    {"id": "python_docs", "kind": "http_read", "origin": "https://docs.python.org", "path_prefix": "/3", "query_keys": [], "timeout_seconds": 10, "max_response_bytes": 65536}
+  ]
+}

@@ -1,0 +1,1440 @@
+{
+  "agent_effect_gate/__init__.py": [],
+  "agent_effect_gate/__main__.py": [],
+  "agent_effect_gate/_sandbox_worker.py": [
+    {
+      "name": "lockdown",
+      "kind": "function",
+      "arguments": "arguments()"
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='job')])"
+    }
+  ],
+  "agent_effect_gate/_version.py": [],
+  "agent_effect_gate/api_schema.py": [
+    {
+      "name": "obj",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='properties')])"
+    }
+  ],
+  "agent_effect_gate/broker.py": [
+    {
+      "name": "Sink",
+      "kind": "class"
+    },
+    {
+      "name": "Sink.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='destination_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker",
+      "kind": "class"
+    },
+    {
+      "name": "Broker.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='database', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load()))), arg(arg='key', annotation=Name(id='bytes', ctx=Load()))], kwonlyargs=[arg(arg='clock', annotation=Subscript(value=Name(id='Callable', ctx=Load()), slice=Tuple(elts=[List(ctx=Load()), Name(id='float', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='sinks', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Sink', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='audit_anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='tools', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='ToolAdapter', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[Attribute(value=Name(id='time', ctx=Load()), attr='time', ctx=Load()), Constant(value=None), Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "name": "Broker.close",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "Broker.create_task",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='tenant_id', annotation=Name(id='str', ctx=Load())), arg(arg='policy', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Broker.replace_policy",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='policy', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Broker.set_suspended",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='suspended', annotation=Name(id='bool', ctx=Load()))], kwonlyargs=[arg(arg='operator', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "Broker.revoke_session",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='token', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='operator', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "Broker.register_source",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='source_id', annotation=Name(id='str', ctx=Load())), arg(arg='version', annotation=Name(id='str', ctx=Load())), arg(arg='document', annotation=Name(id='Any', ctx=Load()))], kwonlyargs=[arg(arg='origin', annotation=Name(id='str', ctx=Load())), arg(arg='origin_kind', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None, Constant(value='operator_import')])"
+    },
+    {
+      "name": "Broker.approval_view",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='proposal_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker.review_payload",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='proposal_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker.approve_release",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='proposal_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='reviewer', annotation=Name(id='str', ctx=Load())), arg(arg='ttl_seconds', annotation=BinOp(left=Name(id='int', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[None, Constant(value=None)])"
+    },
+    {
+      "name": "Broker.revoke_release",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='proposal_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='reviewer', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "Broker.host_view",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='session_token', annotation=Name(id='str', ctx=Load())), arg(arg='operation', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker.handle",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='session_token', annotation=Name(id='str', ctx=Load())), arg(arg='request', annotation=BinOp(left=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Name(id='str', ctx=Load())), op=BitOr(), right=Name(id='bytes', ctx=Load())))])"
+    },
+    {
+      "name": "Broker._dispatch",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='operation', annotation=Name(id='str', ctx=Load())), arg(arg='a', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Broker._deliver",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='job', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load())), arg(arg='fingerprint', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._principal",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='token', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._policy",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._artifact",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='artifact_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._proposal",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='proposal_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='task_id', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='agent', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "name": "Broker._release_binding",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='row', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='task', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='require_adapter', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=True)])"
+    },
+    {
+      "name": "Broker._channel",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='recipient', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._resolve",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='field', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Broker._artifact_catalog",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._inbox",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._notices",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._release_status",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='row', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._releases",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._context",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker._budgets",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='task'), arg(arg='policy')])"
+    },
+    {
+      "name": "Broker._answer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load())), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='record_evidence', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=False)])"
+    },
+    {
+      "name": "Broker._deny",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='code', annotation=Name(id='str', ctx=Load())), arg(arg='fingerprint', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Broker._incident",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='code', annotation=Name(id='str', ctx=Load())), arg(arg='event', annotation=Name(id='int', ctx=Load()))], kwonlyargs=[arg(arg='severity', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "Broker.flag_incident",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='operator', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "Broker.record_runtime_notice",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=Name(id='str', ctx=Load())), arg(arg='code', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker.list_incidents",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='task_id', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "Broker.triage_incident",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='incident_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='owner', annotation=Name(id='str', ctx=Load())), arg(arg='track', annotation=Name(id='str', ctx=Load())), arg(arg='due_at', annotation=Name(id='float', ctx=Load())), arg(arg='severity', annotation=Name(id='str', ctx=Load())), arg(arg='third_party', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None, None, None, None, Constant(value='unknown')])"
+    },
+    {
+      "name": "Broker.due_incidents",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "Broker.disclosure_draft",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='incident_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Broker.record_disclosure_decision",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='incident_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='reviewer', annotation=Name(id='str', ctx=Load())), arg(arg='decision', annotation=Name(id='str', ctx=Load())), arg(arg='security_reviewed', annotation=Name(id='bool', ctx=Load())), arg(arg='third_party_notified', annotation=Name(id='bool', ctx=Load())), arg(arg='rationale', annotation=Name(id='str', ctx=Load())), arg(arg='report', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[None, None, None, None, None, Constant(value=None)])"
+    },
+    {
+      "name": "Broker.confirm_publication",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='incident_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='operator', annotation=Name(id='str', ctx=Load())), arg(arg='publication_reference', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None, None])"
+    },
+    {
+      "name": "Broker._get_incident",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='incident_id', annotation=Name(id='str', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/cli.py": [
+    {
+      "name": "_emit",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "_broker",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load())), arg(arg='anchor_path', annotation=BinOp(left=Name(id='Path', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kwonlyargs=[arg(arg='adapters', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=True)], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "_password",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=BinOp(left=Name(id='Path', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kwonlyargs=[arg(arg='confirm', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=False)])"
+    },
+    {
+      "name": "initialize",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load())), arg(arg='config_path', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='production', annotation=Name(id='bool', ctx=Load())), arg(arg='reviewer', annotation=BinOp(left=Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[Constant(value=False), Constant(value=None)])"
+    },
+    {
+      "name": "serve",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='b', annotation=Name(id='Broker', ctx=Load())), arg(arg='token', annotation=Name(id='str', ctx=Load())), arg(arg='stop', annotation=BinOp(left=Attribute(value=Name(id='threading', ctx=Load()), attr='Event', ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='argv', annotation=BinOp(left=Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    }
+  ],
+  "agent_effect_gate/client.py": [
+    {
+      "name": "GateTransport",
+      "kind": "class"
+    },
+    {
+      "name": "GateTransport.exchange",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "UnixTransport",
+      "kind": "class"
+    },
+    {
+      "name": "UnixTransport.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='socket_path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load()))), arg(arg='token', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='expected_server_uid', annotation=BinOp(left=Name(id='int', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='timeout', annotation=Name(id='float', ctx=Load()))], kw_defaults=[Constant(value=None), Constant(value=120)])"
+    },
+    {
+      "name": "UnixTransport.__repr__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "UnixTransport.exchange",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "read_session_token",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load())))])"
+    },
+    {
+      "name": "GateClient",
+      "kind": "class"
+    },
+    {
+      "name": "GateClient.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='transport', annotation=Name(id='GateTransport', ctx=Load()))])"
+    },
+    {
+      "name": "GateClient.unix",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='cls'), arg(arg='socket_path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load()))), arg(arg='token_file', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load())))], kwonlyargs=[arg(arg='expected_server_uid', annotation=BinOp(left=Name(id='int', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='timeout', annotation=Name(id='float', ctx=Load()))], kw_defaults=[Constant(value=None), Constant(value=120)])"
+    },
+    {
+      "name": "GateClient.request",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation', annotation=Name(id='str', ctx=Load())), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "GateClient.view",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateClient._phase_id",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='request_id', annotation=Name(id='str', ctx=Load())), arg(arg='phase', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateClient.call_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='tool_id', annotation=Name(id='str', ctx=Load())), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "GateClient.arequest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation', annotation=Name(id='str', ctx=Load())), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "GateClient.acall_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='tool_id', annotation=Name(id='str', ctx=Load())), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    }
+  ],
+  "agent_effect_gate/codec.py": [
+    {
+      "name": "Rejected",
+      "kind": "class"
+    },
+    {
+      "name": "IntegrityError",
+      "kind": "class"
+    },
+    {
+      "name": "identifier",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "text",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load())), arg(arg='limit', annotation=Name(id='int', ctx=Load()))], defaults=[Constant(value=4096)])"
+    },
+    {
+      "name": "validate_json",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))], kwonlyargs=[arg(arg='max_nodes', annotation=Name(id='int', ctx=Load()))], kw_defaults=[Constant(value=100000)])"
+    },
+    {
+      "name": "canonical",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "_pairs",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='pairs', annotation=Subscript(value=Name(id='list', ctx=Load()), slice=Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "_bad_constant",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='_', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "loads",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='raw', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='bytes', ctx=Load())))], kwonlyargs=[arg(arg='limit', annotation=Name(id='int', ctx=Load()))], kw_defaults=[Name(id='MAX_WIRE_BYTES', ctx=Load())])"
+    },
+    {
+      "name": "digest",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='raw', annotation=Name(id='bytes', ctx=Load()))])"
+    },
+    {
+      "name": "seal",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='key', annotation=Name(id='bytes', ctx=Load())), arg(arg='domain', annotation=Name(id='str', ctx=Load())), arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "authenticated",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='key', annotation=Name(id='bytes', ctx=Load())), arg(arg='domain', annotation=Name(id='str', ctx=Load())), arg(arg='value', annotation=Name(id='Any', ctx=Load())), arg(arg='signature', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "exact_keys",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load())), arg(arg='required', annotation=Subscript(value=Name(id='set', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())), arg(arg='optional', annotation=BinOp(left=Subscript(value=Name(id='set', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    }
+  ],
+  "agent_effect_gate/configuration.py": [
+    {
+      "name": "validate_grants",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='policy', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='tools', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[arg(arg='production', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=False)])"
+    },
+    {
+      "name": "read_config",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='production', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=False)])"
+    }
+  ],
+  "agent_effect_gate/customer.py": [
+    {
+      "name": "customer_profile",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='rootfs', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='task_id'), arg(arg='tenant_id')], kw_defaults=[Constant(value='customer-task'), Constant(value='customer')])"
+    }
+  ],
+  "agent_effect_gate/http_tools.py": [
+    {
+      "name": "resolve_addresses",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='host', annotation=Name(id='str', ctx=Load())), arg(arg='port', annotation=Name(id='int', ctx=Load())), arg(arg='timeout', annotation=Name(id='float', ctx=Load()))])"
+    },
+    {
+      "name": "_PinnedHTTP",
+      "kind": "class"
+    },
+    {
+      "name": "_PinnedHTTP.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='host'), arg(arg='port'), arg(arg='address'), arg(arg='deadline')])"
+    },
+    {
+      "name": "_PinnedHTTP.connect",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "_PinnedHTTPS",
+      "kind": "class"
+    },
+    {
+      "name": "_PinnedHTTPS.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='host'), arg(arg='port'), arg(arg='address'), arg(arg='deadline'), arg(arg='context')])"
+    },
+    {
+      "name": "_PinnedHTTPS.connect",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPTransport",
+      "kind": "class"
+    },
+    {
+      "name": "HTTPTransport.__post_init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPTransport.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPTransport._addresses",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPTransport.request",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='method', annotation=Name(id='str', ctx=Load())), arg(arg='target', annotation=Name(id='str', ctx=Load())), arg(arg='call_id', annotation=Name(id='str', ctx=Load())), arg(arg='payload', annotation=BinOp(left=Name(id='bytes', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='media_type', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='api_version', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[Constant(value=None)], defaults=[Constant(value=None), Constant(value='application/octet-stream')])"
+    },
+    {
+      "name": "_path",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "HTTPRead",
+      "kind": "class"
+    },
+    {
+      "name": "HTTPRead.__post_init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPRead.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPRead.prepare",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='artifact', annotation=Name(id='ArtifactResolver', ctx=Load()))])"
+    },
+    {
+      "name": "HTTPRead.invoke",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='prepared'), arg(arg='call_id')])"
+    },
+    {
+      "name": "HTTPUpload",
+      "kind": "class"
+    },
+    {
+      "name": "HTTPUpload.__post_init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPUpload.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "HTTPUpload.prepare",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='arguments'), arg(arg='artifact')])"
+    },
+    {
+      "name": "HTTPUpload.invoke",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='prepared'), arg(arg='call_id')])"
+    },
+    {
+      "name": "GitHubCodeSearch",
+      "kind": "class"
+    },
+    {
+      "name": "GitHubCodeSearch.__post_init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "GitHubCodeSearch.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "GitHubCodeSearch.prepare",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='arguments'), arg(arg='artifact')])"
+    },
+    {
+      "name": "GitHubCodeSearch.invoke",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='prepared'), arg(arg='call_id')])"
+    }
+  ],
+  "agent_effect_gate/integrations/__init__.py": [],
+  "agent_effect_gate/integrations/common.py": [
+    {
+      "name": "_json_argument",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='raw', annotation=Name(id='str', ctx=Load())), arg(arg='expected', annotation=Name(id='type', ctx=Load()))])"
+    },
+    {
+      "name": "_safe_result",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='function', annotation=Subscript(value=Name(id='Callable', ctx=Load()), slice=Tuple(elts=[List(ctx=Load()), Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit",
+      "kind": "class"
+    },
+    {
+      "name": "GateToolkit.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_list_tools",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_call_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='tool_id', annotation=Name(id='str', ctx=Load())), arg(arg='arguments_json', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_execute_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='call_id', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_context",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_read_observation",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='observation_id', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_put_artifact",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='media_type', annotation=Name(id='str', ctx=Load())), arg(arg='data_b64', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_read_artifact",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='artifact_id', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_share_artifact",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='artifact_id', annotation=Name(id='str', ctx=Load())), arg(arg='recipient', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_send_message",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='recipient', annotation=Name(id='str', ctx=Load())), arg(arg='text', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_submit_answer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='text', annotation=Name(id='str', ctx=Load())), arg(arg='citations_json', annotation=Name(id='str', ctx=Load())), arg(arg='limitations_json', annotation=Name(id='str', ctx=Load())), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.aeg_answer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "GateToolkit.functions",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "GateToolkit.async_functions",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "ToolBundle",
+      "kind": "class"
+    },
+    {
+      "name": "ToolBundle.assert_inventory",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='actual', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "ToolBundle.answer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "ToolBundle.aanswer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')], kwonlyargs=[arg(arg='request_id', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    }
+  ],
+  "agent_effect_gate/integrations/langchain.py": [
+    {
+      "name": "build_tools",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/integrations/langgraph.py": [
+    {
+      "name": "build_tool_node",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/integrations/mcp.py": [
+    {
+      "name": "build_server",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='argv', annotation=BinOp(left=Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    }
+  ],
+  "agent_effect_gate/integrations/openai_agents.py": [
+    {
+      "name": "build_tools",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/integrations/pydantic_ai.py": [
+    {
+      "name": "build_tools",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='GateClient', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/ipc.py": [
+    {
+      "name": "TransportError",
+      "kind": "class"
+    },
+    {
+      "name": "TransportError.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='code', annotation=Name(id='str', ctx=Load()))], defaults=[Constant(value='gate_transport_unavailable')])"
+    },
+    {
+      "name": "_limit",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='float', ctx=Load()))])"
+    },
+    {
+      "name": "peer_uid",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='connection', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load()))])"
+    },
+    {
+      "name": "_read_exact",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='connection', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='size', annotation=Name(id='int', ctx=Load())), arg(arg='deadline', annotation=Name(id='float', ctx=Load()))])"
+    },
+    {
+      "name": "receive_frame",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='connection', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='limit', annotation=Name(id='int', ctx=Load())), arg(arg='deadline', annotation=Name(id='float', ctx=Load()))])"
+    },
+    {
+      "name": "send_frame",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='connection', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='payload', annotation=Name(id='bytes', ctx=Load())), arg(arg='limit', annotation=Name(id='int', ctx=Load())), arg(arg='deadline', annotation=Name(id='float', ctx=Load()))])"
+    },
+    {
+      "name": "_safe_socket_directory",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load())), arg(arg='owner', annotation=BinOp(left=Name(id='int', ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "_Handler",
+      "kind": "class"
+    },
+    {
+      "name": "_Handler.handle",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "UnixGateServer",
+      "kind": "class"
+    },
+    {
+      "name": "UnixGateServer.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load()))), arg(arg='broker', annotation=Name(id='Any', ctx=Load()))], kwonlyargs=[arg(arg='allowed_uids', annotation=BinOp(left=Subscript(value=Name(id='set', ctx=Load()), slice=Name(id='int', ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='max_workers', annotation=Name(id='int', ctx=Load())), arg(arg='io_timeout', annotation=Name(id='float', ctx=Load())), arg(arg='socket_mode', annotation=Name(id='int', ctx=Load()))], kw_defaults=[Constant(value=None), Constant(value=16), Constant(value=10), Constant(value=384)])"
+    },
+    {
+      "name": "UnixGateServer.process_request",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='client_address', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "UnixGateServer.process_request_thread",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='client_address', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "UnixGateServer.handle_error",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='request', annotation=Attribute(value=Name(id='socket', ctx=Load()), attr='socket', ctx=Load())), arg(arg='client_address', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "UnixGateServer.start",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "UnixGateServer.stop",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "UnixGateServer.server_close",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    }
+  ],
+  "agent_effect_gate/mcp_server.py": [
+    {
+      "name": "MCPServer",
+      "kind": "class"
+    },
+    {
+      "name": "MCPServer.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='broker', annotation=Name(id='Broker', ctx=Load())), arg(arg='token', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "MCPServer.error",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='request_id'), arg(arg='code', annotation=Name(id='int', ctx=Load())), arg(arg='message', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "MCPServer.handle",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='wire', annotation=BinOp(left=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Name(id='bytes', ctx=Load())), op=BitOr(), right=Name(id='str', ctx=Load())))])"
+    },
+    {
+      "name": "MCPServer._call",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation'), arg(arg='arguments'), arg(arg='request_id')], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "ScopedMCPServer",
+      "kind": "class"
+    },
+    {
+      "name": "ScopedMCPServer.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='client')])"
+    },
+    {
+      "name": "ScopedMCPServer._call",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation'), arg(arg='arguments'), arg(arg='request_id')], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "serve_mcp",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='server', annotation=Name(id='MCPServer', ctx=Load())), arg(arg='stop', annotation=BinOp(left=Attribute(value=Name(id='threading', ctx=Load()), attr='Event', ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    }
+  ],
+  "agent_effect_gate/model_connector.py": [
+    {
+      "name": "ModelConnectorError",
+      "kind": "class"
+    },
+    {
+      "name": "OpenAIResponsesAdapter",
+      "kind": "class"
+    },
+    {
+      "name": "OpenAIResponsesAdapter.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')], kwonlyargs=[arg(arg='model', annotation=Name(id='str', ctx=Load())), arg(arg='prompt', annotation=Name(id='str', ctx=Load())), arg(arg='allow_provider_egress', annotation=Name(id='bool', ctx=Load())), arg(arg='credential_env', annotation=Name(id='str', ctx=Load())), arg(arg='max_output_tokens', annotation=Name(id='int', ctx=Load())), arg(arg='max_input_bytes', annotation=Name(id='int', ctx=Load())), arg(arg='timeout_seconds', annotation=Name(id='int', ctx=Load()))], kw_defaults=[None, None, None, Constant(value='OPENAI_API_KEY'), Constant(value=4096), Constant(value=1000000), Constant(value=30)])"
+    },
+    {
+      "name": "OpenAIResponsesAdapter.export_state",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "OpenAIResponsesAdapter.import_state",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='value', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "OpenAIResponsesAdapter.propose",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='context', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='last_result', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))])"
+    }
+  ],
+  "agent_effect_gate/models.py": [
+    {
+      "name": "_action",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value', annotation=Name(id='Any', ctx=Load()))])"
+    },
+    {
+      "name": "RunCheckpoint",
+      "kind": "class"
+    },
+    {
+      "name": "RunCheckpoint.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load())))])"
+    },
+    {
+      "name": "RunCheckpoint._check_path",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "RunCheckpoint.lease",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "RunCheckpoint.load",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "RunCheckpoint.save",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='value', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "_view",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='client', annotation=Name(id='Any', ctx=Load())), arg(arg='operation', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "_AdapterFailed",
+      "kind": "class"
+    },
+    {
+      "name": "run_client",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='adapter', annotation=Name(id='Any', ctx=Load())), arg(arg='client', annotation=Name(id='Any', ctx=Load()))], kwonlyargs=[arg(arg='max_steps', annotation=Name(id='int', ctx=Load())), arg(arg='checkpoint', annotation=BinOp(left=Name(id='RunCheckpoint', ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='resume', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=20), Constant(value=None), Constant(value=False)])"
+    }
+  ],
+  "agent_effect_gate/operations.py": [
+    {
+      "name": "read_anchor",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=BinOp(left=Name(id='Path', ctx=Load()), op=BitOr(), right=Constant(value=None)))])"
+    },
+    {
+      "name": "_hash_file",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_session_files",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_checkpoint_files",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_copy_snapshot",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='source', annotation=Name(id='Path', ctx=Load())), arg(arg='target', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_new_destination",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='destination', annotation=Name(id='Path', ctx=Load())), arg(arg='source', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_verify_snapshot",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load())), arg(arg='anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))])"
+    },
+    {
+      "name": "backup_state",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load())), arg(arg='destination', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "_verify_backup",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='source', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "restore_state",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='source', annotation=Name(id='Path', ctx=Load())), arg(arg='destination', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='anchor', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='operator', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None, None])"
+    },
+    {
+      "name": "doctor",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None))), arg(arg='production', annotation=Name(id='bool', ctx=Load())), arg(arg='check_sandbox', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=None), Constant(value=False), Constant(value=False)])"
+    }
+  ],
+  "agent_effect_gate/policy.py": [
+    {
+      "name": "validate_policy",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='raw', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "json_pointer",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='data', annotation=Name(id='Any', ctx=Load())), arg(arg='pointer', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "evaluate",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='data', annotation=Name(id='Any', ctx=Load())), arg(arg='field', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/process_io.py": [
+    {
+      "name": "capture",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='argv'), arg(arg='payload')], kwonlyargs=[arg(arg='timeout'), arg(arg='max_output')], kw_defaults=[Constant(value=10), Constant(value=262144)], kwarg=arg(arg='kwargs'), defaults=[Constant(value=b'')])"
+    }
+  ],
+  "agent_effect_gate/protected.py": [
+    {
+      "name": "no_symlink_components",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "_owner_and_mode",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='info', annotation=Attribute(value=Name(id='os', ctx=Load()), attr='stat_result', ctx=Load()))])"
+    },
+    {
+      "name": "private_directory",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "private_file",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "read_private",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='limit', annotation=Name(id='int', ctx=Load()))], kw_defaults=[Constant(value=8000000)])"
+    },
+    {
+      "name": "write_private",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load())), arg(arg='content', annotation=Name(id='bytes', ctx=Load()))])"
+    },
+    {
+      "name": "sync_directory",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='path', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "check_state",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load()))])"
+    },
+    {
+      "name": "state_lease",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='state', annotation=Name(id='Path', ctx=Load()))], kwonlyargs=[arg(arg='exclusive', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=False)])"
+    }
+  ],
+  "agent_effect_gate/reviewer_auth.py": [
+    {
+      "name": "AuthError",
+      "kind": "class"
+    },
+    {
+      "name": "password_hash",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='password', annotation=Name(id='str', ctx=Load())), arg(arg='salt', annotation=BinOp(left=Name(id='bytes', ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "verify_password",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='password', annotation=Name(id='str', ctx=Load())), arg(arg='encoded', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "Reviewer",
+      "kind": "class"
+    },
+    {
+      "name": "ReviewerAuth",
+      "kind": "class"
+    },
+    {
+      "name": "ReviewerAuth.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='store')])"
+    },
+    {
+      "name": "ReviewerAuth._user_value",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='row')])"
+    },
+    {
+      "name": "ReviewerAuth._session_value",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='row')])"
+    },
+    {
+      "name": "ReviewerAuth._user",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='username')])"
+    },
+    {
+      "name": "ReviewerAuth.set_user",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='username', annotation=Name(id='str', ctx=Load())), arg(arg='password', annotation=Name(id='str', ctx=Load())), arg(arg='tasks', annotation=Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "ReviewerAuth.disable",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='username', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "ReviewerAuth._admit_login",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "ReviewerAuth.login",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='username', annotation=Name(id='str', ctx=Load())), arg(arg='password', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "ReviewerAuth.authenticate",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='token', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Constant(value=None)))])"
+    },
+    {
+      "name": "ReviewerAuth.logout",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='reviewer', annotation=Name(id='Reviewer', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/reviewer_service.py": [
+    {
+      "name": "ReviewerService",
+      "kind": "class"
+    },
+    {
+      "name": "ReviewerService.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='broker')])"
+    },
+    {
+      "name": "ReviewerService.overview",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='reviewer')])"
+    },
+    {
+      "name": "ReviewerService.queue",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='reviewer'), arg(arg='state'), arg(arg='offset')], defaults=[Constant(value='PENDING'), Constant(value=0)])"
+    },
+    {
+      "name": "ReviewerService.detail",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='reviewer'), arg(arg='kind'), arg(arg='record_id')])"
+    },
+    {
+      "name": "ReviewerService.decide",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='reviewer'), arg(arg='kind'), arg(arg='record_id'), arg(arg='decision'), arg(arg='review_token')])"
+    }
+  ],
+  "agent_effect_gate/reviewer_web.py": [
+    {
+      "name": "WebError",
+      "kind": "class"
+    },
+    {
+      "name": "WebError.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='status'), arg(arg='code')])"
+    },
+    {
+      "name": "ReviewerApp",
+      "kind": "class"
+    },
+    {
+      "name": "ReviewerApp.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='broker')], kwonlyargs=[arg(arg='public_origin', annotation=Name(id='str', ctx=Load()))], kw_defaults=[Constant(value='http://127.0.0.1:8765')])"
+    },
+    {
+      "name": "ReviewerApp.__call__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='scope'), arg(arg='receive'), arg(arg='send')])"
+    },
+    {
+      "name": "ReviewerApp._body",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='receive')])"
+    },
+    {
+      "name": "ReviewerApp._session",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='reviewer')])"
+    },
+    {
+      "name": "ReviewerApp._cookie",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='token'), arg(arg='max_age')], defaults=[Name(id='SESSION_SECONDS', ctx=Load())])"
+    }
+  ],
+  "agent_effect_gate/rootfs.py": [
+    {
+      "name": "build",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='destination', annotation=Name(id='Path', ctx=Load()))])"
+    }
+  ],
+  "agent_effect_gate/runtime.py": [
+    {
+      "name": "ModelAdapter",
+      "kind": "class"
+    },
+    {
+      "name": "ModelAdapter.propose",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='context', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='last_result', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))])"
+    },
+    {
+      "name": "run",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='adapter', annotation=Name(id='ModelAdapter', ctx=Load())), arg(arg='broker', annotation=Name(id='Broker', ctx=Load())), arg(arg='session_token', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='max_steps', annotation=Name(id='int', ctx=Load())), arg(arg='checkpoint'), arg(arg='resume', annotation=Name(id='bool', ctx=Load()))], kw_defaults=[Constant(value=20), Constant(value=None), Constant(value=False)])"
+    },
+    {
+      "name": "_TrustedHostClient",
+      "kind": "class"
+    },
+    {
+      "name": "_TrustedHostClient.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='broker'), arg(arg='token')])"
+    },
+    {
+      "name": "_TrustedHostClient.request",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation'), arg(arg='arguments')], kwonlyargs=[arg(arg='request_id')], kw_defaults=[None])"
+    },
+    {
+      "name": "_TrustedHostClient.view",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='operation')])"
+    },
+    {
+      "name": "_run_checkpointed",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='adapter'), arg(arg='broker'), arg(arg='token')], kwonlyargs=[arg(arg='max_steps'), arg(arg='checkpoint'), arg(arg='resume')], kw_defaults=[None, None, None])"
+    }
+  ],
+  "agent_effect_gate/sandbox.py": [
+    {
+      "name": "LinuxSandbox",
+      "kind": "class"
+    },
+    {
+      "name": "LinuxSandbox.__post_init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "LinuxSandbox.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "LinuxSandbox.prepare",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='arguments'), arg(arg='artifact')])"
+    },
+    {
+      "name": "LinuxSandbox.invoke",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='prepared'), arg(arg='call_id')])"
+    }
+  ],
+  "agent_effect_gate/store.py": [
+    {
+      "name": "Store",
+      "kind": "class"
+    },
+    {
+      "name": "Store.__init__",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='path', annotation=BinOp(left=Name(id='str', ctx=Load()), op=BitOr(), right=Name(id='Path', ctx=Load()))), arg(arg='key', annotation=Name(id='bytes', ctx=Load())), arg(arg='clock', annotation=Subscript(value=Name(id='Callable', ctx=Load()), slice=Tuple(elts=[List(ctx=Load()), Name(id='float', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Attribute(value=Name(id='time', ctx=Load()), attr='time', ctx=Load()), Constant(value=None)])"
+    },
+    {
+      "name": "Store._migrate_read_accounting",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "Store._migrate_capability_accounting",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "Store.transaction",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "Store.append",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Connection', ctx=Load())), arg(arg='task', annotation=Name(id='str', ctx=Load())), arg(arg='agent', annotation=Name(id='str', ctx=Load())), arg(arg='kind', annotation=Name(id='str', ctx=Load())), arg(arg='details', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Store._event",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='row', annotation=Attribute(value=Name(id='sqlite3', ctx=Load()), attr='Row', ctx=Load()))])"
+    },
+    {
+      "name": "Store._verify_tail",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='anchor', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "Store.verify",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='anchor', annotation=BinOp(left=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()), op=BitOr(), right=Constant(value=None)))], defaults=[Constant(value=None)])"
+    },
+    {
+      "name": "Store.close",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    }
+  ],
+  "agent_effect_gate/tool_config.py": [
+    {
+      "name": "load_tools",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='specs')])"
+    }
+  ],
+  "agent_effect_gate/tool_gate.py": [
+    {
+      "name": "public_manifest",
+      "kind": "function",
+      "arguments": "arguments(args=[arg(arg='value')])"
+    },
+    {
+      "name": "ToolGate",
+      "kind": "class"
+    },
+    {
+      "name": "ToolGate._private_tool_manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='adapter')])"
+    },
+    {
+      "name": "ToolGate._tools_for",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='p', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load()))])"
+    },
+    {
+      "name": "ToolGate._tool_call",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='call_id'), arg(arg='task_id'), arg(arg='agent')], defaults=[Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "name": "ToolGate._tool_binding",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='row'), arg(arg='task'), arg(arg='p')], kwonlyargs=[arg(arg='require_adapter')], kw_defaults=[Constant(value=True)])"
+    },
+    {
+      "name": "ToolGate._tool_status",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='row')])"
+    },
+    {
+      "name": "ToolGate._recent_tools",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='task_id'), arg(arg='agent')])"
+    },
+    {
+      "name": "ToolGate.review_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='call_id', annotation=Name(id='str', ctx=Load()))])"
+    },
+    {
+      "name": "ToolGate.approve_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='call_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='reviewer', annotation=Name(id='str', ctx=Load())), arg(arg='ttl_seconds', annotation=BinOp(left=Name(id='int', ctx=Load()), op=BitOr(), right=Constant(value=None)))], kw_defaults=[None, Constant(value=None)])"
+    },
+    {
+      "name": "ToolGate.revoke_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='call_id', annotation=Name(id='str', ctx=Load()))], kwonlyargs=[arg(arg='reviewer', annotation=Name(id='str', ctx=Load()))], kw_defaults=[None])"
+    },
+    {
+      "name": "ToolGate._dispatch_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='task'), arg(arg='p'), arg(arg='agent'), arg(arg='operation'), arg(arg='a')])"
+    },
+    {
+      "name": "ToolGate._deliver_tool",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='job'), arg(arg='task_id'), arg(arg='agent'), arg(arg='request_id'), arg(arg='fingerprint')])"
+    },
+    {
+      "name": "ToolGate._observation",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='task_id'), arg(arg='agent'), arg(arg='observation_id')])"
+    },
+    {
+      "name": "ToolGate._model_answer",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='db'), arg(arg='task'), arg(arg='p'), arg(arg='agent')])"
+    }
+  ],
+  "agent_effect_gate/tool_types.py": [
+    {
+      "name": "ToolResult",
+      "kind": "class"
+    },
+    {
+      "name": "ToolAdapter",
+      "kind": "class"
+    },
+    {
+      "name": "ToolAdapter.manifest",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self')])"
+    },
+    {
+      "name": "ToolAdapter.prepare",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='arguments', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='artifact', annotation=Name(id='ArtifactResolver', ctx=Load()))])"
+    },
+    {
+      "name": "ToolAdapter.invoke",
+      "kind": "method",
+      "arguments": "arguments(args=[arg(arg='self'), arg(arg='prepared', annotation=Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='Any', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='call_id', annotation=Name(id='str', ctx=Load()))])"
+    }
+  ]
+}
