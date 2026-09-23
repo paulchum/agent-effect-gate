@@ -20,6 +20,23 @@ import install as installer
 from agent_effect_gate import __version__
 
 
+def portable_ast_dump(value: str) -> str:
+    """Compare dump structure across Python's omission of empty list fields.
+
+    Parse the serialized AST as data without evaluating its constructor calls.
+    Literal defaults and annotations remain nodes, including an empty List node.
+    """
+    class OmitEmptyListFields(ast.NodeTransformer):
+        def visit_Call(self, node):
+            self.generic_visit(node)
+            node.keywords = [field for field in node.keywords
+                             if not (isinstance(field.value, ast.List) and not field.value.elts)]
+            return node
+
+    tree = OmitEmptyListFields().visit(ast.parse(value, mode='eval'))
+    return ast.dump(tree, include_attributes=False)
+
+
 class Distribution(unittest.TestCase):
     def test_complete_api_signature_contract(self):
         contract = json.loads((ROOT / 'verification/api_contract.json').read_text())
@@ -37,7 +54,41 @@ class Distribution(unittest.TestCase):
                             if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef)):
                                 found.append({'name': node.name + '.' + method.name, 'kind': 'method',
                                               'arguments': ast.dump(method.args, include_attributes=False)})
+                for item in expected + found:
+                    if 'arguments' in item:
+                        item['arguments'] = portable_ast_dump(item['arguments'])
                 self.assertTrue(all(item in found for item in expected), relative)
+
+    def test_api_signature_dump_ignores_only_empty_list_fields(self):
+        explicit = ("arguments(posonlyargs=[], args=[arg(arg='value')], kwonlyargs=[], "
+                    "kw_defaults=[], defaults=[Call(func=Name(id='factory', ctx=Load()), "
+                    "args=[], keywords=[])])")
+        omitted = ("arguments(args=[arg(arg='value')], "
+                   "defaults=[Call(func=Name(id='factory', ctx=Load()))])")
+        self.assertEqual(portable_ast_dump(explicit), portable_ast_dump(omitted))
+
+    def test_api_signature_dump_preserves_meaningful_changes(self):
+        def signature(arguments):
+            node = ast.parse(f'def example({arguments}): pass').body[0]
+            return portable_ast_dump(ast.dump(node.args, include_attributes=False))
+
+        pairs = [
+            ('first, second', 'second, first'),
+            ('value', 'renamed'),
+            ('value, /', 'value'),
+            ('value', '*, value'),
+            ('*values', '**values'),
+            ('value=1', 'value=2'),
+            ('value=[]', 'value'),
+            ('value=[]', 'value=None'),
+            ('value=[]', 'value=()'),
+            ('*, value', '*, value=None'),
+            ('value: list[int]', 'value: list[str]'),
+            ('value: "args=[]"', 'value: "args"'),
+        ]
+        for before, after in pairs:
+            with self.subTest(before=before, after=after):
+                self.assertNotEqual(signature(before), signature(after))
 
     def test_complete_named_regression_inventory(self):
         expected = set(json.loads((ROOT / 'verification/regression_contract.json').read_text())['required_tests'])

@@ -9,5 +9,6 @@
 - Build public distributions from an explicit source inventory, excluding local evidence, Git metadata, environments and runtime files.
 - Correct Docker build inputs and source-distribution contents.
 - Add GitHub-hosted Linux CI, contributor guidance, issue templates and private security reporting.
+- Make existing API-contract and socket-denial tests portable across supported Python versions and Linux runners.
 
 This preview does not certify a production deployment. See [VALIDATION.md](VALIDATION.md) for checks and outstanding qualification.

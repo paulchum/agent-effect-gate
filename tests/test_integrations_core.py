@@ -273,8 +273,18 @@ class IPCFramingAndPermissions(IPCBase):
         with self.assertRaises(TransportError): wrong.exchange({'request_id':'x','operation':'context','arguments':{}})
     def test_os_admission_is_not_bypassed_by_valid_token(self):
         self.server.allowed_uids = frozenset({os.getuid()+1})
-        result = self.request('context')
-        self.assertEqual(result['error'], 'unauthorized_peer')
+        with patch.object(self.broker, 'handle', wraps=self.broker.handle) as dispatch:
+            try:
+                result = self.request('context')
+            except TransportError:
+                # The server rejects the UID before reading a frame. Closing a
+                # socket with unread client bytes may reset it before the denial
+                # frame arrives; either outcome must leave the broker untouched.
+                pass
+            else:
+                self.assertFalse(result['ok'])
+                self.assertEqual(result['error'], 'unauthorized_peer')
+            dispatch.assert_not_called()
     def test_missing_socket_raises_without_silent_fallback(self):
         transport = UnixTransport(self.directory/'absent.sock', self.tokens['main'])
         with self.assertRaises(TransportError): transport.exchange({'request_id':'x','operation':'context','arguments':{}})
