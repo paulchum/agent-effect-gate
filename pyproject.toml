@@ -38,14 +38,14 @@ version = {attr = "build_support.distribution_version"}
 include = ["agent_effect_gate*"]
 
 [project.optional-dependencies]
-review = ["uvicorn==0.48.0"]
+review = ["uvicorn==0.54.0"]
 # Optional dependencies belong in the framework process, not the broker process.
 openai = ["openai-agents==0.22.3"]
 langchain = ["langchain-core==1.6.4"]
 langgraph = ["langchain-core==1.6.4", "langgraph==1.2.12"]
 pydantic = ["pydantic-ai-slim==2.47.0"]
 mcp = ["mcp==2.2.0"]
-all = ["uvicorn==0.48.0", "openai-agents==0.22.3", "langchain-core==1.6.4", "langgraph==1.2.12", "pydantic-ai-slim==2.47.0", "mcp==2.2.0"]
+all = ["uvicorn==0.54.0", "openai-agents==0.22.3", "langchain-core==1.6.4", "langgraph==1.2.12", "pydantic-ai-slim==2.47.0", "mcp==2.2.0"]
 
 [tool.setuptools.package-data]
 agent_effect_gate = ["web/*.html", "web/*.css", "web/*.js"]
